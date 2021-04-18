@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculator</title>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculator</h1>
+        <p>
+          <br>Green operands calculate the result instantly,<br>without requiring more operands.<br><br>
+          <b>Definitions of some operands:</b>
+          <br><b>sin, cos, tan</b> - trigonometrical functions
+          <br><b>~</b> - rounding to the nearest integer
+          <br><b>&#8508;</b> multiplies the number by &#8508; 
+          <br><b>&#829;&radic;</b> - root by second operand
+          <br><b>&radic;</b> - root
+          <br><b>^</b> - squaring
+        </p>
+        <div class="calculator">
+          <div class="screen">
+            <div data-previous-number class="previous-number"></div>
+            <div data-current-number class="current-number"></div>
+          </div>
+          <div class="keys">
+            <button class="operator" data-operator>+</button> 
+            <button class="operator" data-operator>-</button>
+            <button class="operator" data-operator>&times;</button>
+            <button class="operator" data-operator>÷</button>
+            <button class="operator" data-operator>^</button>
+            <button class="operator-instant" data-instant-operator>sin</button>
+            <button data-number>7</button>
+            <button data-number>8</button>
+            <button data-number>9</button>
+            <!-- root -->
+            <button class="operator" data-operator>&#829;&radic;</button>
+            <button class="operator-instant" data-instant-operator>cos</button>
+            <button data-number>4</button>
+            <button data-number>5</button>
+            <button data-number>6</button>
+            <!-- root-x -->
+            <button class="operator-instant" data-instant-operator>&radic;</button>
+            <button class="operator-instant" data-instant-operator>tan</button>
+            <button data-number>1</button>
+            <button data-number>2</button>
+            <button data-number>3</button>
+            <button class="operator-instant" data-instant-operator>&#8508;</button>
+            <button class="operator-instant" data-instant-operator>~</button>
+            <button data-number>0</button>
+            <button data-number>.</button>
+            <button data-clear>AC</button>
+            <button class="equals" data-equals>=</button>
+            <button class="delete" data-delete>DEL</button>
+          </div>
+        </div>
+    </div>
+</body>
+</html>

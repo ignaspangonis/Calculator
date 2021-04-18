@@ -1,0 +1,141 @@
+
+/********************
+Major
+********************/
+
+html {
+  box-sizing: border-box;
+  font-family: 'Montserrat', serif;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.3;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+body {
+  margin: 0;
+  background-image: linear-gradient(236deg, hsl(0, 0%, 100%), rgb(165, 198, 214));
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+
+/********************
+Components
+********************/
+
+a {
+  text-decoration: none;
+}
+
+button {
+  font-size: inherit;
+}
+
+button:hover,
+button:active,
+button:focus {
+  outline: none;
+}
+
+/********************
+Container
+********************/
+
+.container {
+  display: grid;
+  grid-template-rows: minmax(50px, 1fr), minmax(200px, 2fr), 6fr;
+}
+
+.container > p {
+  font-size: 0.7em;
+  text-align: center;
+}
+@media only screen and (max-width: 600px) {
+  .container > p {
+    font-size: 0.5em;
+  }
+}
+.container > h1 {
+  font-size: 1.5em;
+  text-align: center;
+  margin-top: 50px;
+}
+
+/********************
+Calculator
+********************/
+
+.calculator {
+  border-radius: 20px;
+  box-shadow: 0 60px 30px 0 rgba(39, 39, 39, 0.1);
+  margin: 40px auto;
+  padding: 20px;
+  min-width: 400px;
+  max-width: 520px;
+  width: 50%;
+  overflow: hidden;
+  background-color: rgb(141, 141, 141);
+}
+
+.screen {
+  background-image: linear-gradient(220deg, hsl(202, 34%, 15%), hsl(201, 8%, 41%));
+  text-align: right;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  height: 3.5em;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 10px;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+.screen > .previous-number {
+  color: rgba(255, 255, 255, .75);
+  font-size: 0.5rem;
+}
+
+.screen > .current-number {
+  color: white;
+  font-size: 1rem;
+}
+
+.keys {
+  display: grid;
+  grid-gap: 3px;
+  grid-template-columns: repeat(6, minmax(50px, 1fr));
+  grid-template-rows: repeat(5, minmax(50px, 1fr));
+}
+
+.keys > * {
+  background-color: rgb(61, 57, 57);
+  position: relative;
+  text-align: center;
+  border-radius: 10px;
+  color: rgb(216, 210, 210);
+}
+
+.operator-instant {
+  color: hsl(201, 49%, 66%);
+}
+
+.equals {
+  grid-column: -4;
+  grid-row: 2 / span 4;
+}
+
+.delete {
+  grid-column: 5 / span 2;
+}
