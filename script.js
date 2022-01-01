@@ -26,20 +26,21 @@ class Calculator {
 
   parseToString(currentNumber) {
     const stringNumber = currentNumber.toString();
-    const integerPart = parseFloat(stringNumber.split('.')[0]); // sveikoji dalis
-    const decimalPart = stringNumber.split('.')[1]; // dešimtainė dalis
-    let integerDisplay; // sveikosios dalies string eilutė
+    const integerPart = parseFloat(stringNumber.split('.')[0]);
+    const decimalPart = stringNumber.split('.')[1];
+    let integerDisplay;
+
     if (isNaN(integerPart)) {
       integerDisplay = '';
     } else {
       integerDisplay = integerPart.toString();
     }
+
     // Grąžinti sveiką skaičių jei skaičius neturi dešimtainės dalies
-    return decimalPart == null ? integerDisplay : `${integerDisplay}.${decimalPart}`;
+    return decimalPart ? integerDisplay : `${integerDisplay}.${decimalPart}`;
   }
 
   clear() {
-    // Išvalomi laukai
     this.currentNumber = '';
     this.previousNumber = '';
     this.operator = undefined;
