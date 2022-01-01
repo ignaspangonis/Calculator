@@ -1,3 +1,6 @@
+// NOTE: the comments are written in Lithuanian,
+// because that was required for the university assignment
+
 class Calculator {
   constructor(previousText, currentText) {
     // Objekto Calculator laukams priskiriamos rodyklės į HTML elementus
@@ -37,9 +40,9 @@ class Calculator {
 
   clear() {
     // Išvalomi laukai
-    this.currentNumber = ''; // string
-    this.previousNumber = ''; // string
-    this.operator = undefined; // string
+    this.currentNumber = '';
+    this.previousNumber = '';
+    this.operator = undefined;
   }
 
   delete() {
@@ -49,7 +52,7 @@ class Calculator {
 
   appendNumber(number) {
     if (number === '.' && this.currentNumber.includes('.')) return; // neleidžiame pridėlioti daug '.'
-    this.currentNumber = this.currentNumber.toString() + number.toString(); // append'iname
+    this.currentNumber = this.currentNumber.toString() + number.toString();
   }
 
   setOperator(operator) {
@@ -66,10 +69,12 @@ class Calculator {
   }
 
   calculate() {
-    let result; // rezultatas
+    let result;
     const first = parseFloat(this.previousNumber);
-    const second = parseFloat(this.currentNumber); // iš
-    if (isNaN(first) || isNaN(second)) return; // jei ne skaičius, return
+    const second = parseFloat(this.currentNumber);
+
+    if (isNaN(first) || isNaN(second)) return;
+
     switch (this.operator) { // atliekame veiksmą pagal operatorių
       case '+':
         result = first + second;
@@ -92,7 +97,9 @@ class Calculator {
       default:
         break;
     }
+
     result = +result.toFixed(14);
+
     this.currentNumber = result;
     this.operator = undefined;
     this.previousNumber = '';
@@ -101,7 +108,9 @@ class Calculator {
   calculateInstant() {
     let result; // rezultatas
     const number = parseFloat(this.currentNumber); // įsivedame tik vieną skaičių
+
     if (isNaN(number)) return;
+
     switch (this.operator) {
       case '√':
         result = Math.pow(number, 1/2);
@@ -125,27 +134,29 @@ class Calculator {
       default:
         return;
     }
+
     result = +result.toFixed(14); // iki 14 dešimtainių skaitmenų
-    //console.log(result + "aaaaaaa")
+
     this.currentNumber = result;
     this.operator = undefined;
     this.previousNumber = '';
   }  
 }
 
+// DOM selectors
 
-const numbers = document.querySelectorAll('[data-number]'); // skaičiai
-const operators = document.querySelectorAll('[data-operator]'); // operatoriai
+const numbers = document.querySelectorAll('[data-number]');
+const operators = document.querySelectorAll('[data-operator]');
 const instantOperators = document.querySelectorAll('[data-instant-operator]'); // operatoriai, kurie vykdo iškart
-const equals = document.querySelector('[data-equals]'); // lygu mygtukas
-const del = document.querySelector('[data-delete]'); // delete mygtukas
-const allClear = document.querySelector('[data-clear]'); // išvalymo mygtukas
-const previousText = document.querySelector('[data-previous-number]'); // viršutinis tekstas
-const currentText = document.querySelector('[data-current-number]'); // dabartinis tekstas
+const equals = document.querySelector('[data-equals]');
+const del = document.querySelector('[data-delete]');
+const allClear = document.querySelector('[data-clear]');
+const previousText = document.querySelector('[data-previous-number]');
+const currentText = document.querySelector('[data-current-number]');
 
-const calculator = new Calculator(previousText, currentText); // sukuriame skaičiuotuvo objektą
+const calculator = new Calculator(previousText, currentText);
 
-// Event listeners:
+// Event listeners
 
 numbers.forEach(button => { // kiekvienam mygtukui iš masyvo
   button.addEventListener('click', () => {     // kai paspaudžia ant skaičiaus
@@ -154,33 +165,33 @@ numbers.forEach(button => { // kiekvienam mygtukui iš masyvo
   })
 })
 
-operators.forEach(button => { // kiekvienam mygtukui iš masyvo
-  button.addEventListener('click', () => { // kai paspaudžia ant operatoriaus
-    calculator.setOperator(button.innerText); // set'ink operatorių
-    calculator.moveCurrentToPrevious(); // apatinį lauką perkelk į viršų
-    calculator.updateScreen(); // atnaujink vaizdą
+operators.forEach(button => {
+  button.addEventListener('click', () => {     // kai paspaudžia ant operatoriaus
+    calculator.setOperator(button.innerText);  // nustatyk operatorių
+    calculator.moveCurrentToPrevious();        // apatinį skaičių perkelk į viršų
+    calculator.updateScreen();
   })
 })
 
-instantOperators.forEach(button => { // kiekvienam mygtukui iš masyvo
-  button.addEventListener('click', () => { // kai paspaudžia ant instant operatoriaus
-    calculator.setOperator(button.innerText); // set'ink operatorių
-    calculator.calculateInstant(); // suskaičiuok nelaukdamas antro skaičiaus
-    calculator.updateScreen(); // atnaujink vaizdą
+instantOperators.forEach(button => {
+  button.addEventListener('click', () => {     // kai paspaudžia ant "instant" operatoriaus
+    calculator.setOperator(button.innerText);
+    calculator.calculateInstant();             // suskaičiuok nelaukdamas antro skaičiaus
+    calculator.updateScreen();                 // atnaujink vaizdą
   })
 })
 
-equals.addEventListener('click', button => { // =
+equals.addEventListener('click', button => {
   calculator.calculate();
   calculator.updateScreen();
 })
 
-allClear.addEventListener('click', button => { // AC
+allClear.addEventListener('click', button => {
   calculator.clear();
   calculator.updateScreen();
 })
 
-del.addEventListener('click', button => { // DEL
+del.addEventListener('click', button => {
   calculator.delete();
   calculator.updateScreen();
 })
