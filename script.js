@@ -37,7 +37,7 @@ class Calculator {
     }
 
     // Grąžinti sveiką skaičių jei skaičius neturi dešimtainės dalies
-    return decimalPart ? integerDisplay : `${integerDisplay}.${decimalPart}`;
+    return decimalPart === null ? integerDisplay : `${integerDisplay}.${decimalPart}`;
   }
 
   clear() {
