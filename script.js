@@ -35,7 +35,7 @@ class Calculator {
       integerDisplay = integerPart.toString();
     }
 
-    return [null, undefined].includes(decimalPart)
+    return decimalPart == null
       ? integerDisplay
       : `${integerDisplay}.${decimalPart}`;
   }
